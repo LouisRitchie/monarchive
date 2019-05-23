@@ -1,0 +1,17 @@
+<div class="record-container route-container">
+  <h6>Record</h6>
+
+  <h5><%= @name %></h5>
+
+  <div id="record-page">
+    <%= render(MonarchiveWeb.FragmentView, "header_asset.html", header_asset: @header_asset) %>
+    <p id="hero-description"><em><%= @description %></em></p>
+    
+    <%= render(MonarchiveWeb.FragmentView, "paragraphs.html", paragraphs: @paragraphs) %>
+  </div>
+</div>
+
+<a id="delete-button" class="right-align-bottom-button">Delete Record</a>
+<a href="/record/<%= @id %>/edit" class="right-align-bottom-button">Edit Record</a>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/record/record.js") %>"></script>

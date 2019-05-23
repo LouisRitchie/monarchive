@@ -1,0 +1,199 @@
+/* LIST AND LIST ITEM FRAGMENT CSS */
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid #888;
+}
+
+.list-item {
+  padding: 8px 16px;
+  border-bottom: 1px solid #888;
+  display: flex;
+}
+
+.list-item:last-child {
+  border-bottom: none
+}
+
+.list-item-thumb-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 14px;
+}
+
+.list-item-text-content {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.list-item-description {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* PARAGRAPH CSS */
+
+p.pre-line {
+  white-space: pre-line;
+}
+
+/* RECORD and SUBJECT CSS */
+
+h6 {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.route-container h5 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.paragraphs {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.paragraphs p {
+  text-indent: 24px;
+  text-align: justify;
+}
+
+#hero-image {
+  border: 1px solid #888;
+}
+
+#hero-description {
+  padding-top: 6px;
+  text-align: justify;
+}
+
+#hero-image,
+#hero-description {
+  width: 440px;
+  max-height: 700px;
+  max-width: 100%;
+  margin: auto;
+  display: block;
+}
+
+.paragraph h6 {
+  margin-bottom: 18px;
+}
+
+.paragraph {
+  margin-bottom: 42px;
+}
+
+#subject-page .paragraph-content-container,
+#record-page .paragraph-content-container {
+  justify-content: flex-start;
+}
+
+#subject-page .paragraph-image-container.left,
+#record-page .paragraph-image-container.left {
+  margin: 0 12px 0 0;
+}
+
+#subject-page .paragraph-image-container.right,
+#record-page .paragraph-image-container.right {
+  margin: 0 0 0 12px;
+}
+
+/* EDIT RECORD and EDIT SUBJECT CSS */
+
+.right-align-bottom-button {
+  float: right;
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  padding: 6px 6px;
+  margin: 0;
+  height: auto;
+  line-height: 100%;
+}
+
+.short-field {
+  max-width: 420px;
+  width: 98%;
+}
+
+.fields-wrapper {
+  display: flex;
+  flex-flow: column; 
+  width: auto;
+  padding-bottom: 18px;
+}
+
+.fields-wrapper > input,
+.fields-wrapper > textarea,
+.fields-wrapper > button {
+  margin-bottom: 9px;
+}
+
+.fields-button-cluster {
+  align-self: flex-end;
+}
+
+.fields-button-cluster > button {
+  margin-left: 3px;
+}
+
+input[type=file] {
+  /* hide this, because we style it ourselves */
+  display: none;
+}
+
+.fake-button {
+  /* styled to look like a standard button. */
+  color: #2a2a2a;
+  border: 1px solid #999;
+  border-radius: 2.5px;
+  display: inline-block;
+  padding: 5px 12px 4px;
+  cursor: pointer;
+}
+
+.header-image-container {
+  text-align: center;
+}
+
+.header-image {
+  width: 440px;
+  max-height: 700px;
+  max-width: 100%;
+  margin: auto;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.paragraph-content-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.paragraph-content {
+  flex-grow: 1;
+}
+
+.paragraph-image-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18px;
+}
+
+.paragraph-image {
+  max-width: 220px;
+  margin: 1px 1px 3px 1px;
+}

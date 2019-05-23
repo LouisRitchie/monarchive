@@ -1,0 +1,28 @@
+<section class="fields-wrapper">
+
+  <label>Name</label>
+  <input class="short-field" id="name-field" type="text" maxlength="255" value="<%= @name %>" />
+
+  <%= if Ecto.assoc_loaded?(@header_asset) and @header_asset do %>
+    <div class="header-image-container">
+      <img class="header-image" src="<%= @header_asset.filepath %>" />
+      <label class="header-image-filename"><%= @header_asset.filename %></label>
+    </div>
+  <% else %>
+    <div class="header-image-container" style="display: none;">
+      <img class="header-image" />
+      <label class="header-image-filename" />
+    </div>
+  <% end %>
+
+  <label>Description</label>
+  <input class="long-field" id="description-field" type="text" value="<%= @description %>" />
+
+  <div class="fields-button-cluster">
+    <label class="fake-button">
+      <input type="file" accept="image/*" data-type="header" />
+      Set header image
+    </label>
+  </div>
+
+</section>

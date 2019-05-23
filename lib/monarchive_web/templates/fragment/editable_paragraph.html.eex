@@ -1,0 +1,32 @@
+<section class="fields-wrapper paragraph-container">
+
+  <label>Header</label>
+  <input value="<%= @header %>" class="short-field paragraph-header" type="text" maxlength="255" />
+
+  <label>Content</label>
+  <div class="paragraph-content-container">
+    <textarea rows="16" cols="56" class="paragraph-content">
+      <%= @content %>
+    </textarea>
+    <%= if Ecto.assoc_loaded?(@asset) and @asset do %>
+      <div class="paragraph-image-container">
+        <img class="paragraph-image" src="<%= @asset.filepath %>" />
+        <label class="paragraph-image-filename"><%= @asset.filename %></label>
+      </div>
+    <% else %>
+      <div class="paragraph-image-container" style="display: none;">
+        <img class="paragraph-image" />
+        <label class="paragraph-image-filename" />
+      </div>
+    <% end %>
+  </div>
+
+  <div class="fields-button-cluster">
+    <label class="fake-button">
+      <input type="file" accept="image/*" data-type="paragraph" />
+      Set paragraph image
+    </label>
+    <button class="button delete-paragraph-button">Delete</button>
+  </div>
+
+</section>

@@ -1,0 +1,11 @@
+<ul class="list">
+  <%= for item <- @items do %>
+    <li class="list-item">
+      <%= if item.header_asset do %><img class="list-item-thumb-image" src="<%= item.header_asset.filepath %>" /><% end %>
+      <div class="list-item-text-content">
+        <a href="http://localhost:4000/<%= @item_type %>/<%= item.id %>"><%= item.name %></a>
+        <p class="list-item-description"><%= item.description %></p>
+      </div>
+    </li>
+  <% end %>
+</ul>

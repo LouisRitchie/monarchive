@@ -1,0 +1,1 @@
+<%= if @header_asset do %><img id="hero-image" src="<%= @header_asset.filepath %>" /><% end %>

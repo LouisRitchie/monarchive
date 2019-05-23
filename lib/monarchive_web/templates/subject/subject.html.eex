@@ -1,0 +1,17 @@
+<div class="subject-container route-container">
+  <h6>Subject</h6>
+
+  <h5><%= @name %></h5>
+
+  <div id="subject-page">
+    <%= render(MonarchiveWeb.FragmentView, "header_asset.html", header_asset: @header_asset) %>
+    <p id="hero-description"><em><%= @description %></em></p>
+
+    <%= render(MonarchiveWeb.FragmentView, "paragraphs.html", paragraphs: @paragraphs) %>
+  </div>
+</div>
+
+<a id="delete-button" class="right-align-bottom-button">Delete Subject</a>
+<a href="/subject/<%= @id %>/edit" class="right-align-bottom-button">Edit Subject</a>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/subject/subject.js") %>"></script>

@@ -1,0 +1,15 @@
+/* This file is for your main application css. */
+
+@import "./phoenix.css";
+
+@import "./shared.css";
+
+@import "./layout.css";
+
+@import "./home.css";
+
+@import "./record.css";
+@import "./new_record.css";
+
+@import "./subject.css";
+@import "./new_subject.css";

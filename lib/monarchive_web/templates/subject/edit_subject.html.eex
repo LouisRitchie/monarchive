@@ -1,0 +1,17 @@
+<div class="new-subject-container route-container">
+  <h5>Edit Subject</h5>
+
+  <div id="new-subject-form">
+    <%= render(MonarchiveWeb.FragmentView, "editable_heading.html", name: @name, description: @description, header_asset: @header_asset) %>
+
+    <%= for paragraph <- @paragraphs do %>
+      <%= render(MonarchiveWeb.FragmentView, "editable_paragraph.html", content: paragraph.content, header: paragraph.header, asset: paragraph.asset) %>
+    <% end %>
+
+    <%= render(MonarchiveWeb.FragmentView, "add_paragraph_button.html") %>
+
+    <%= render(MonarchiveWeb.FragmentView, "submit_button.html") %>
+  </div>
+</div>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/subject/editSubject.js") %>"></script>

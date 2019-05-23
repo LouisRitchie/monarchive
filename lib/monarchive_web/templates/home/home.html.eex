@@ -1,0 +1,13 @@
+<div class="route-container">
+  <h6>Home</h6>
+  <section class="row">
+    <article class="column">
+      <h5>Subjects</h5>
+      <%= render(MonarchiveWeb.FragmentView, "list.html", item_type: "subject", items: @subjects) %>
+    </article>
+    <article class="column">
+      <h5>Records</h5>
+      <%= render(MonarchiveWeb.FragmentView, "list.html", item_type: "record", items: @records) %>
+    </article>
+  </section>
+</div>

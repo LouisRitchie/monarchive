@@ -1,0 +1,26 @@
+<% require Integer %>
+
+<section class="paragraphs">
+  <%= for paragraph <- @paragraphs do %>
+    <article class="paragraph">
+      <%= if paragraph.header do %><h6><%= paragraph.header %></h6><% end %>
+      <div class="paragraph-content-container">
+
+        <%= if Integer.is_even(paragraph.order) and Ecto.assoc_loaded?(paragraph.asset) and paragraph.asset do %>
+          <div class="paragraph-image-container left">
+            <img class="paragraph-image" src="<%= paragraph.asset.filepath %>" />
+          </div>
+        <% end %>
+
+        <p><%= paragraph.content %></p>
+
+        <%= if !Integer.is_even(paragraph.order) and Ecto.assoc_loaded?(paragraph.asset) and paragraph.asset do %>
+          <div class="paragraph-image-container right">
+            <img class="paragraph-image" src="<%= paragraph.asset.filepath %>" />
+          </div>
+        <% end %>
+
+      </div>
+    </article>
+  <% end %>
+</section>

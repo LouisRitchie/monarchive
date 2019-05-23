@@ -1,0 +1,19 @@
+.new-record-container h5 {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#new-record-form {
+  width: 700px;
+  max-width: 96%;
+  margin: auto;
+}
+
+#new-record-form .paragraphs {
+  margin-top: 50px;
+}
+
+#add-paragraph-button {
+  position: absolute;
+  bottom: 61px; 
+}
