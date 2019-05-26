@@ -2,18 +2,20 @@ defmodule Monarchive.Assets do
   alias Monarchive.Repo
   alias Monarchive.Assets.Asset
 
-  def create(%{filename: filename, raw_bytes: raw_bytes}) do
+  @internal_img_dir "priv/static/images/content"
+
+  def create(%{filename: filename, raw_bytes: bytelist}) do
     asset = %Asset{filename: filename} |> Repo.insert!
 
-    filepath = "/images/content/fullsize/#{asset.id}___#{filename}"
-    full_filepath = "priv/static#{filepath}"
+    uri = asset.id <> "___" <> filename
+    fullsize_uri = "/fullsize/" <> uri
+    thumbnail_uri = "/thumbnails/" <> uri
 
-    length = map_size(raw_bytes)
-    bytes = Enum.map(1..length, fn i -> raw_bytes["#{i - 1}"] end)
-    bytes = :binary.list_to_bin(bytes) <> <<0>>
-    File.write!(full_filepath, bytes)
+    bytes = get_binary_from_bytelist(bytelist)
+    File.write!(@internal_img_dir <> fullsize_uri, bytes)
+    Mogrify.open(@internal_img_dir <> fullsize_uri) |> Mogrify.resize("100x100") |> Mogrify.save(path: @internal_img_dir <> thumbnail_uri)
 
-    {:ok, asset} = update(asset, %{filepath: filepath})
+    {:ok, asset} = update(asset, %{uri: uri})
 
     asset
   end
@@ -29,5 +31,11 @@ defmodule Monarchive.Assets do
   def delete(%Asset{} = asset) do
     Repo.delete! asset
     File.rm! "priv/static#{asset.filepath}"
+  end
+
+  defp get_binary_from_bytelist(bytelist) do
+    length = map_size(bytelist)
+    bytes = Enum.map(1..length, fn i -> bytelist["#{i - 1}"] end)
+    :binary.list_to_bin(bytes) <> <<0>>
   end
 end

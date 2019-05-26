@@ -11,9 +11,7 @@ defmodule Monarchive.Assets.Asset do
 
   schema "assets" do
     field :filename, :string
-    field :filepath, :string
-    field :date_recorded, :date
-    field :description, :string
+    field :uri, :string
 
     belongs_to(:record, Record, type: :string)
     belongs_to(:subject, Subject, type: :string)
