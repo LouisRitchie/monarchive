@@ -24,7 +24,7 @@ defmodule Monarchive.Assets.Asset do
   @doc false
   def changeset(asset, attrs) do
     asset
-    |> cast(attrs, [:filename, :filepath, :date_recorded, :description, :record_id, :subject_id, :record_paragraph_id, :subject_paragraph_id])
+    |> cast(attrs, [:filename, :uri, :record_id, :subject_id, :record_paragraph_id, :subject_paragraph_id])
     |> cast_assoc(:record)
     |> cast_assoc(:record_paragraph)
     |> cast_assoc(:subject)
