@@ -9,9 +9,9 @@ defmodule MonarchiveWeb.ImageUploaderChannel do
   end
 
   def handle_in("upload", %{"raw_bytes" => raw_bytes, "filename" => filename}, socket) do
-    %{filename: filename, filepath: filepath} = Assets.create(%{filename: filename, raw_bytes: raw_bytes})
+    %{filename: filename, uri: uri} = Assets.create(%{filename: filename, raw_bytes: raw_bytes})
 
-    {:reply, {:ok, %{filename: filename, filepath: filepath}}, socket}
+    {:reply, {:ok, %{filename: filename, uri: uri}}, socket}
   end
 
   def terminate(_params, _socket) do
