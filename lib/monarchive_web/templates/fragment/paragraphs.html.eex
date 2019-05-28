@@ -8,7 +8,7 @@
 
         <%= if Integer.is_even(paragraph.order) and Ecto.assoc_loaded?(paragraph.asset) and paragraph.asset do %>
           <div class="paragraph-image-container left">
-            <img class="paragraph-image" src="<%= paragraph.asset.filepath %>" />
+            <img class="paragraph-image" src="/images/content/originals/<%= paragraph.asset.uri %>" />
           </div>
         <% end %>
 
@@ -16,7 +16,7 @@
 
         <%= if !Integer.is_even(paragraph.order) and Ecto.assoc_loaded?(paragraph.asset) and paragraph.asset do %>
           <div class="paragraph-image-container right">
-            <img class="paragraph-image" src="<%= paragraph.asset.filepath %>" />
+            <img class="paragraph-image" src="/images/content/originals/<%= paragraph.asset.uri %>" />
           </div>
         <% end %>
 

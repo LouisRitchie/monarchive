@@ -10,7 +10,7 @@
     </textarea>
     <%= if Ecto.assoc_loaded?(@asset) and @asset do %>
       <div class="paragraph-image-container">
-        <img class="paragraph-image" src="<%= @asset.filepath %>" />
+        <img class="paragraph-image" src="/images/content/originals/<%= @asset.uri %>" />
         <label class="paragraph-image-filename"><%= @asset.filename %></label>
       </div>
     <% else %>

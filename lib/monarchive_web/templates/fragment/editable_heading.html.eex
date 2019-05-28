@@ -5,7 +5,7 @@
 
   <%= if Ecto.assoc_loaded?(@header_asset) and @header_asset do %>
     <div class="header-image-container">
-      <img class="header-image" src="<%= @header_asset.filepath %>" />
+      <img class="header-image" src="/images/content/originals/<%= @header_asset.uri %>" />
       <label class="header-image-filename"><%= @header_asset.filename %></label>
     </div>
   <% else %>

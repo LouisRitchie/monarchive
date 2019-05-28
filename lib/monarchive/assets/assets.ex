@@ -2,12 +2,14 @@ defmodule Monarchive.Assets do
   alias Monarchive.Repo
   alias Monarchive.Assets.Asset
 
-  @asset_dir "priv/static/assets/content"
+  @asset_dir "priv/static/images/content"
 
   def create(%{filename: filename, raw_bytes: bytelist}) do
-    asset = Repo.insert!(%Asset{filename: filename})
+    asset = Repo.insert! %Asset{filename: filename}
 
-    uri = asset.id <> "___" <> filename
+    IO.inspect asset.id
+    IO.inspect filename
+    uri = "#{asset.id}" <> "___" <> filename
     store_original_asset(bytelist, uri)
     create_and_store_asset_thumbnail(uri)
 
@@ -31,7 +33,7 @@ defmodule Monarchive.Assets do
 
   defp store_original_asset(bytelist, uri) do
     bytes = get_binary_from_bytelist(bytelist)
-    File.write!(@asset_dir <> "/original/" <> uri, bytes)
+    File.write!(@asset_dir <> "/originals/" <> uri, bytes)
   end
 
   defp create_and_store_asset_thumbnail(uri) do
