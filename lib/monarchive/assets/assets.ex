@@ -7,8 +7,6 @@ defmodule Monarchive.Assets do
   def create(%{filename: filename, raw_bytes: bytelist}) do
     asset = Repo.insert! %Asset{filename: filename}
 
-    IO.inspect asset.id
-    IO.inspect filename
     uri = "#{asset.id}" <> "___" <> filename
     store_original_asset(bytelist, uri)
     create_and_store_asset_thumbnail(uri)

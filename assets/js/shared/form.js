@@ -82,9 +82,10 @@ export const uploadAssetFactory = ({ assetType }) => (imageInput, imageUploaderC
     let array = new Uint8Array(result)
     const payload = { raw_bytes: array, filename: image.name }
 
-    imageUploaderChannel.push("upload", payload).receive("ok", ({filename, filepath, id}) => {
+    imageUploaderChannel.push("upload", payload).receive("ok", ({filename, uri, id}) => {
       const image = new Image()
-      image.src = filepath
+      const asset_location = `/images/content/originals/${uri}`
+      image.src = asset_location
 
       switch (assetType) {
         case 'header':
@@ -92,7 +93,7 @@ export const uploadAssetFactory = ({ assetType }) => (imageInput, imageUploaderC
 
           image.onload = () => {
             headerImageContainer.setAttribute("style", "")
-            headerImageContainer.children[0].setAttribute("src", filepath)
+            headerImageContainer.children[0].setAttribute("src", asset_location)
             headerImageContainer.children[1].innerHTML = filename
           }
           break
@@ -101,7 +102,7 @@ export const uploadAssetFactory = ({ assetType }) => (imageInput, imageUploaderC
 
           image.onload = () => {
             paragraphImageContainer.setAttribute("style", "")
-            paragraphImageContainer.children[0].setAttribute("src", filepath)
+            paragraphImageContainer.children[0].setAttribute("src", asset_location)
             paragraphImageContainer.children[1].innerHTML = filename
           }
           break
@@ -111,7 +112,7 @@ export const uploadAssetFactory = ({ assetType }) => (imageInput, imageUploaderC
           break
       }
 
-      image.onerror = () => setTimeout(() => image.src = filepath, 1000)
+      image.onerror = () => setTimeout(() => image.src = asset_location, 1000)
     }).receive("error", console.error)
   }
 
