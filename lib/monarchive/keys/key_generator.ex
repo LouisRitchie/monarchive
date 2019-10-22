@@ -5,12 +5,12 @@ defmodule Monarchive.Keys.KeyGenerator do
   def generate_key do
     key = generate_seven_character_key()
 
-    if Repo.get(Key, key) do
-      generate_key() # there is a collision, so we try again
-    else
-      Repo.insert!(%Key{key: key})
-      key
-    end
+    # if Repo.get(Key, key) do
+    #   generate_key() # there is a collision, so we try again
+    # else
+    #   Repo.insert!(%Key{key: key})
+    #   key
+    # end
   end
 
   defp generate_seven_character_key do
